@@ -1,3 +1,5 @@
+/** @format */
+
 const request = require("request");
 
 const forecast = (latitude, longitude, callback) => {
@@ -18,10 +20,18 @@ const forecast = (latitude, longitude, callback) => {
     } else {
       callback(
         undefined,
-        body.location.name +
-          " It is currently" +
+        // body.location.name +
+        //   " It is currently" +
+        //   body.current.temperature +
+        //   "degrees"
+        body.current.weather_descriptions[0] +
+          ". It is currently " +
           body.current.temperature +
-          "degrees"
+          " degress out. It feels like " +
+          body.current.feelslike +
+          " degress out. The humidity is " +
+          body.current.humidity +
+          "%."
       );
     }
   });
